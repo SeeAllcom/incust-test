@@ -1,0 +1,26 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>Theme Switcher</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="modalController.dismiss()"><span class="text-red-500">Cancel</span></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-radio-group [value]="themeMode$ | async">
+  <ion-list>
+    <ion-item (click)="setTheme('dark')">
+      <ion-label>Dark mode</ion-label>
+      <ion-radio value="dark"></ion-radio>
+    </ion-item>
+    <ion-item (click)="setTheme('white')">
+      <ion-label>White mode</ion-label>
+      <ion-radio value="white"></ion-radio>
+    </ion-item>
+    <ion-item (click)="setTheme('auto')">
+      <ion-label>Auto mode</ion-label>
+      <ion-radio value="auto"></ion-radio>
+    </ion-item>
+  </ion-list>
+  </ion-radio-group>
+</ion-content>

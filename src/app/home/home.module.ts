@@ -5,16 +5,25 @@ import { FormsModule } from '@angular/forms';
 
 import { HomePage } from './home.page';
 import { HomePageRoutingModule } from './home-routing.module';
-import { MessageComponentModule } from '../message/message.module';
+import { ItemComponentModule } from '../item/item.module';
+import { PipesModule } from '../shared/pipes/pipes.module';
+import { ThemeSwitcherComponent } from '../dialogs/theme-switcher/theme-switcher.component';
+import { MatRippleModule } from '@angular/material/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MessageComponentModule,
-    HomePageRoutingModule
+    ItemComponentModule,
+    HomePageRoutingModule,
+    PipesModule,
+    MatRippleModule
   ],
-  declarations: [HomePage]
+  declarations: [
+    HomePage,
+    ThemeSwitcherComponent,
+  ],
 })
-export class HomePageModule {}
+export class HomePageModule {
+}

@@ -3,19 +3,19 @@ import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { ViewMessagePageRoutingModule } from './view-message-routing.module';
 
-import { ViewMessagePage } from './view-message.page';
+import { ViewItemPage } from './view-item-page.component';
 
 describe('ViewMessagePage', () => {
-  let component: ViewMessagePage;
-  let fixture: ComponentFixture<ViewMessagePage>;
+  let component: ViewItemPage;
+  let fixture: ComponentFixture<ViewItemPage>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ViewMessagePage ],
+      declarations: [ ViewItemPage ],
       imports: [IonicModule.forRoot(), ViewMessagePageRoutingModule, RouterModule.forRoot([])]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ViewMessagePage);
+    fixture = TestBed.createComponent(ViewItemPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

@@ -1,8 +1,16 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Inbox
+      Products
     </ion-title>
+    <ion-buttons *ngIf="!isIos" slot="end">
+      <ion-button (click)="openThemeSwitcher()">
+        <ion-icon slot="start" name="moon-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar *ngIf="!isIos">
+    <ion-searchbar (ionChange)="saveSearchValue($event)" [value]="searchbarValue"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
@@ -10,16 +18,24 @@
   <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  
+
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">
-        Inbox
+        Products
       </ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="openThemeSwitcher()">
+          <ion-icon slot="start" name="moon-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+    <ion-toolbar>
+      <ion-searchbar (ionChange)="saveSearchValue($event)" [value]="searchbarValue"></ion-searchbar>
     </ion-toolbar>
   </ion-header>
-  
-  <ion-list>
-    <app-message *ngFor="let message of getMessages()" [message]="message"></app-message>
+
+  <ion-list class="ion-padding-start ion-padding-end ion-margin-top">
+    <app-item *ngFor="let item of (items$ | async) | searchItem:searchbarValue" [item]="item"></app-item>
   </ion-list>
 </ion-content>

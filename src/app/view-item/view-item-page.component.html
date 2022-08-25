@@ -1,0 +1,49 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [text]="backButtonText" defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div *ngIf="item$ | async as item" class="c-viewItem">
+    <ion-card>
+      <img [src]="item.image"/>
+      <ion-card-content>
+        <ion-card-title>
+          {{item.name}}
+        </ion-card-title>
+        <p>
+          {{item.description}}
+        </p>
+
+        <div class="c-viewItem__buttons">
+          <ion-button expand="block" (click)="setAmount(100)">$100</ion-button>
+          <ion-button expand="block" (click)="setAmount(10)">$10</ion-button>
+          <ion-button expand="block" (click)="setQuantity(2.2)">2.2 qty</ion-button>
+          <ion-button expand="block" (click)="setQuantity(9)">9 qty</ion-button>
+        </div>
+
+        <div [formGroup]="formItem" class="c-viewItemForm">
+          <div class="c-viewItem__row">
+            <div class="c-viewItem__col">
+              <mat-form-field appearance="outline">
+                <mat-label>Amount, $</mat-label>
+                <input formControlName="amount" numbersOnly autocomplete="off" (change)="setAmount(+formControl('amount').value)" matInput>
+              </mat-form-field>
+            </div>
+            <div class="c-viewItem__col">
+              <mat-form-field appearance="outline">
+                <mat-label>Quantity</mat-label>
+                <input formControlName="quantity" numbersOnly autocomplete="off" (change)="setQuantity(+formControl('quantity').value)" matInput>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+        <p *ngIf="!!returnFromAmount">Return from the amount: ${{returnFromAmount}}</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
